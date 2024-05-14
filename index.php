@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>monav classic</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/halaman.css">
+    <link rel="stylesheet" href="./css/halaman.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -25,19 +25,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item mt-1">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="#halamansec">home</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#halaman2">comunity</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="#gallery">galery</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <button type="button" class="btn btn-success me-1 custom-btn me-1 mb-1 ">Success</button>
+                        <button type="button" class="btn btn-success me-1 custom-btn me-1 mb-1 ">LOGIN</button>
                     </li>
                     <li class="nav-item mt-1">
-                        <button type="button" class="btn btn-warning me-1 custom-btn mb-3 ">Success</button>
+                        <button type="button" class="btn btn-warning me-1 custom-btn mb-3 ">SIGN</button>
                     </li>
                 </ul>
             </div>
@@ -52,21 +52,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="galery/slide1.jpg" class="d-block w-100" alt="...">
+                    <img src="halaman/galery/slide1.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption ">
                         <h5>MONAV CLASSIC</h5>
                         <p>Kami menjuaal motor motor bekas yang siap di jual ke anda semua dengan harga murah dan terjangkau.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="galery/slide2.jpg" class="d-block w-100" alt="...">
+                    <img src="halaman/galery/slide2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption ">
                         <h5>MONAV CLASSIC</h5>
                         <p>Kami juga menejual motor motor classic</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="galery/slide3.jpg" class="d-block w-100" alt="...">
+                    <img src="halaman/galery/slide3.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption">
                         <h5>MONAV CLASSIC</h5>
                         <p>Kami menjual motor motor keren dan classic tapi modern</p>
@@ -92,9 +92,10 @@
             <div class="row gy-4">
                 <div class="col-md-6">
                     <div class="card" ">
-                        <img src=" galery/bamc.png" class="card-img-top" alt="...">
+                        <img src=" halaman/galery/bamc.png" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h5 class="card-title">BAMC</h5>
+                            <p class="card-text">Black angels motorcycle club adalah komunitas motor tertua di indonesia, yang didirikan sejak tahun 1979.</p>
                         </div>
                     </div>
                 </div>
@@ -102,12 +103,12 @@
                     <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="galery/bbmc.png" class="img-fluid rounded-start" alt="...">
+                                <img src="halaman/galery/bbmc.png" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <h5 class="card-title">BBMC</h5>
+                                    <p class="card-text">Didirikan sejak 1988 komunitas ini memiliki prinsip "benteng terakhir adalah persaudaraan".</p>
 
                                 </div>
                             </div>
@@ -116,12 +117,12 @@
                     <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img src="galery/hdci.png" class="img-fluid rounded-start" alt="...">
+                                <img src="halaman/galery/hdci.png" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <h5 class="card-title">HDCI</h5>
+                                    <p class="card-text">berdiri sejak 1990, klub motor ini tersebar di seluruh pelosok indonesia.</p>
                                 </div>
                             </div>
                         </div>
@@ -138,29 +139,29 @@
     <section id="gallery">
         <div class="containerg">
             <div class="card2">
-                <img class="foto" src="slide1.jpg" alt="">
+                <img class="foto" src="halaman/galery/slide4.jpg" alt="">
             </div>
             <div class="card2">
-                <img class="foto" src="slide1.jpg" alt="">
+                <img class="foto" src="halaman/galery/slide5.jpg" alt="">
             </div>
             <div class="card2">
-                <img class="foto" src="slide1.jpg" alt="">
+                <img class="foto" src="halaman/galery/slide6.jpg" alt="">
             </div>
             <div class="card2">
-                <img class="foto" src="slide1.jpg" alt="">
+                <img class="foto" src="halaman/galery/slide7.jpg" alt="">
             </div>
             <div class="card2">
-                <img class="foto" src="slide1.jpg" alt="">
+                <img class="foto" src="halaman/galery/slide6.jpg" alt="">
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="position-relative">
+        <div class="position-relative cust-foot">
             <div class="position-absolute top-0 start-0">
 
             </div>
-            <div class="position-absolute top-0 start-50 translate-middle-x">halo</div>
+            <div class="position-absolute top-0 start-50 translate-middle-x">copyright by emmir fahrezi</div>
             <div class="position-absolute top-0 end-0">halo</div>
             <div class="position-absolute top-50 start-0 translate-middle-y">hal;o</div>
             <div class="position-absolute top-50 start-50 translate-middle">halo</div>
