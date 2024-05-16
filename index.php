@@ -1,3 +1,8 @@
+<?php
+include 'function/functions.php';
+$motor = query("SELECT * FROM motor");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -16,7 +21,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">MONAV <span>CLASSIC</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,6 +140,31 @@
         </div>
 
     </section>
+    <section class="dashbor min-vh-100 pt-5 pb-5">
+        <h1 class="text-center text-white">PILIH MOTOR FAVORITE ANDA</h1>
+
+        <div class="container pt-5">
+            <div class="row">
+                <?php $i = 1;
+                foreach ($motor as $mtr) : ?>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="galery/slide6.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
+                                <h6 class="card-title"><?= $mtr['merek'] ?></h6>
+                                <p class="card-text">
+                                    <td><?= $mtr['harga'] ?></td>
+                                </p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
     <section id="gallery">
         <div class="containerg">
@@ -151,7 +181,7 @@
                 <img class="foto" src="halaman/galery/slide7.jpg" alt="">
             </div>
             <div class="card2">
-                <img class="foto" src="halaman/galery/slide6.jpg" alt="">
+                <img class="foto" src="halaman/galery/slide8.jpg" alt="">
             </div>
         </div>
     </section>
@@ -161,7 +191,7 @@
             <div class="position-absolute top-0 start-0">
 
             </div>
-            <div class="position-absolute top-0 start-50 translate-middle-x">copyright by emmir fahrezi</div>
+            <div class="position-absolute top-0 start-50 translate-middle-x cust-1">copyright by emmir fahrezi</div>
             <div class="position-absolute top-0 end-0">halo</div>
             <div class="position-absolute top-50 start-0 translate-middle-y">hal;o</div>
             <div class="position-absolute top-50 start-50 translate-middle">halo</div>

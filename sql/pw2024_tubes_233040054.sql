@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 13, 2024 at 03:19 PM
+-- Generation Time: May 15, 2024 at 10:45 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -46,16 +46,30 @@ CREATE TABLE `motor` (
   `model` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `merek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `harga` int NOT NULL,
-  `foto` varchar(255) NOT NULL,
-  `id_user` int NOT NULL
+  `foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `motor`
 --
 
-INSERT INTO `motor` (`id_motor`, `model`, `merek`, `harga`, `foto`, `id_user`) VALUES
-(1, 'HARLEYY', 'HONDA', 200, '', 0);
+INSERT INTO `motor` (`id_motor`, `model`, `merek`, `harga`, `foto`) VALUES
+(1, 'HARLEYY', 'HONDA', 200, ''),
+(2, 'beat', 'honda', 200, ''),
+(3, 'SUPRA x', 'HONDA', 300000000, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `spare_part`
+--
+
+CREATE TABLE `spare_part` (
+  `id_sparepart` int NOT NULL,
+  `sparepart` varchar(255) NOT NULL,
+  `hagra` varchar(255) NOT NULL,
+  `foto` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -87,6 +101,12 @@ ALTER TABLE `motor`
   ADD PRIMARY KEY (`id_motor`);
 
 --
+-- Indexes for table `spare_part`
+--
+ALTER TABLE `spare_part`
+  ADD PRIMARY KEY (`id_sparepart`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -107,23 +127,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `motor`
 --
 ALTER TABLE `motor`
-  MODIFY `id_motor` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_motor` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `spare_part`
+--
+ALTER TABLE `spare_part`
+  MODIFY `id_sparepart` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_motor`) REFERENCES `motor` (`id_motor`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
