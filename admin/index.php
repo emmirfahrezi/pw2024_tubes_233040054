@@ -9,18 +9,102 @@ $motor = query("SELECT * FROM motor");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link rel="stylesheet" href="../css/cssadmin.css">
-
-
+    <title>MONAV USER</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+
+
+    <!-- css -->
+
+    <style>
+        * {
+            font-family: "Bebas Neue", sans-serif;
+            margin: 0;
+            padding: 0;
+
+
+
+        }
+
+        .navbar {
+            position: fixed;
+            background-color: #080808;
+            padding: 10px 20px;
+
+        }
+
+        .navbar-brand span {
+            color: #f0c929;
+            font-family: "Pacifico", cursive;
+
+
+        }
+
+        .navbar-brand {
+
+            font-family: "Pacifico", cursive;
+
+
+        }
+
+
+        .dashboard {
+            background-color: grey;
+            width: 100%;
+        }
+
+        .carousel-item {
+            height: 100vh;
+        }
+
+        .carousel-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .carousel-caption h5 {
+            color: white;
+            font-size: 50px;
+            text-transform: uppercase;
+
+        }
+
+        .carousel-caption p {
+            color: white;
+            width: 60%;
+            margin: auto;
+            font-size: 20px;
+            line-height: 2;
+        }
+
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
     <!-- navbar start -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">MONAV <span>CLASSIC</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,7 +114,7 @@ $motor = query("SELECT * FROM motor");
                         <a class="nav-link active" aria-current="page" href="#">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">admin</a>
+                        <a class="nav-link" href="#">profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled">category</a>
@@ -54,21 +138,21 @@ $motor = query("SELECT * FROM motor");
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="galery/slide6.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 2">
+                    <div class="carousel-caption d-none d-md-block" style="z-index: 2; position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="galery/slide9.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 2">
+                    <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="..." class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 2">
+                    <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
@@ -78,28 +162,27 @@ $motor = query("SELECT * FROM motor");
     </section>
 
 
-    <section class="dashbor min-vh-100 pt-5 pb-5 bg-secondary">
+    <section class="dashbor min-vh-100 pt-5 pb-5 dashboard">
         <h1 class="text-center ">PILIH MOTOR FAVORITE ANDA</h1>
 
-        <a href="tambah_motor.php">tambah motor</a>
-        <br>
 
 
-        <div class="container pt-5">
-            <div class="row">
+        <div class="container pt-5 ">
+            <button class="btn btn-primary mb-2" type="button" href="tambah_motor.php">Tambah Motor</button>
+            <div class="row gy-4 ">
                 <?php $i = 1;
                 foreach ($motor as $mtr) : ?>
                     <div class="col-md-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="galery/slide6.jpg" class="card-img-top" alt="...">
+                            <img src="galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
                                 <h6 class="card-title"><?= $mtr['merek'] ?></h6>
                                 <p class="card-text">
                                     <td><?= $mtr['harga'] ?></td>
                                 </p>
-                                <a href="#" class="btn btn-primary">EDIT</a>
-                                <a href="#" class="btn btn-danger">HAPUS</a>
+                                <a href="ubah.php?id=<?= $mtr['id_motor']; ?>" class="btn btn-primary">EDIT</a>
+                                <a href="hapus.php?id=<?= $mtr['id_motor']; ?>" onclick="return confirm('yakin ingin mengapus foto?');" class="btn btn-danger">HAPUS</a>
                             </div>
                         </div>
                     </div>
