@@ -1,6 +1,12 @@
 <?php
 include 'function/functions.php';
 
+// jika gada id di url
+if (!isset($_GET['id'])) {
+    header("Location: index.php");
+    exit;
+}
+
 
 // ambil query dari data
 $id = $_GET['id'];

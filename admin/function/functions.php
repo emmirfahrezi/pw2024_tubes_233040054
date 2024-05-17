@@ -81,3 +81,27 @@ function ubah($data)
 
     return mysqli_affected_rows($conn);
 }
+
+
+// cari data
+
+function cari($keyword)
+{
+    $conn = koneksi();
+
+    $query = "SELECT * FROM motor
+               WHERE 
+               model LIKE '%$keyword%' OR
+               merek LIKE '%$keyword%' OR
+               harga LIKE '%$keyword%' OR
+               foto LIKE '%$keyword%'";
+
+    $result = mysqli_query($conn, $query);
+
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    return $rows;
+}

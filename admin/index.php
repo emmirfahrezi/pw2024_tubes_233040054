@@ -1,6 +1,11 @@
 <?php
 include 'function/functions.php';
 $motor = query("SELECT * FROM motor");
+
+// ketika tombol cari di klik
+if (isset($_POST['cari'])) {
+    $motor = cari($_POST['keyword']);
+}
 ?>
 
 <!doctype html>
@@ -168,8 +173,29 @@ $motor = query("SELECT * FROM motor");
 
 
         <div class="container pt-5 ">
-            <button class="btn btn-primary mb-2" type="button" href="tambah_motor.php">Tambah Motor</button>
+
+            <!-- button tambah motor -->
+            <a class="btn btn-primary mb-2" href="tambah_motor.php" role="button">TAMBAH MOTOR</a>
+
+            <!-- form pencarian -->
+            <form class="d-flex mb-2" role="search" action="" method="post" style="width:40%;">
+                <input class="form-control me-2" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off" autofocus>
+                <button class="btn btn-primary" type="submit" name="cari">Cari</button>
+            </form>
+
+
             <div class="row gy-4 ">
+
+                <?php if (empty($motor)) : ?>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+
+                            <div class="card-body bg-danger text-center">
+                                <h5 class="card-title">DATA TIDAK DI TEMUKAN</h5>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
                 <?php $i = 1;
                 foreach ($motor as $mtr) : ?>
                     <div class="col-md-4">
