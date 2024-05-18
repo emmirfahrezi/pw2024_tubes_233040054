@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header('Location: ../login/login.php');
+    exit;
+}
+
 include 'function/functions.php';
 $motor = query("SELECT * FROM motor");
 
@@ -131,6 +138,7 @@ if (isset($_POST['cari'])) {
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
+                    <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
                 </form>
             </div>
         </div>
@@ -207,8 +215,8 @@ if (isset($_POST['cari'])) {
                                 <p class="card-text">
                                     <td><?= $mtr['harga'] ?></td>
                                 </p>
-                                <a href="ubah.php?id=<?= $mtr['id_motor']; ?>" class="btn btn-primary">EDIT</a>
-                                <a href="hapus.php?id=<?= $mtr['id_motor']; ?>" onclick="return confirm('yakin ingin mengapus foto?');" class="btn btn-danger">HAPUS</a>
+                                <a href="details.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
+
                             </div>
                         </div>
                     </div>

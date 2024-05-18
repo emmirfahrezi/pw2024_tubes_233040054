@@ -1,14 +1,29 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header('Location: ../login/login.php');
+    exit;
+}
+
+
 include 'function/functions.php';
 
 if (isset($_POST['tambah'])) {
+
+
+
+    // cek apakah data berhasil di tambahkan
     if (tambah($_POST) > 0) {
         echo "<script>
                 alert('data berhasil ditambahkan!');
                 document.location.href = 'index.php';
                 </script>";
     } else {
-        echo "data gagal ditambah!";
+        echo "<script>
+        alert('data gagal ditambahkan!');
+        document.location.href = 'index.php';
+        </script>";
     }
 }
 ?>
@@ -28,7 +43,7 @@ if (isset($_POST['tambah'])) {
 <body>
     <h1 class="text-center">tambah data motor</h1>
 
-    <form action="" method="post" class="mx-auto" style="width: 600px;">
+    <form action="" method="post" enctype="multipart/form-data" class="mx-auto" style="width: 600px;">
         <div class="mb-3">
             <label for="model" class="form-label">model : </label>
             <input type="text" name="model" class="form-control" id="model" required>
@@ -44,7 +59,7 @@ if (isset($_POST['tambah'])) {
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">foto : </label>
-            <input type="text" name="foto" class="form-control" id="foto" required>
+            <input type="file" name="foto" class="form-control" id="foto" required>
         </div>
         </div>
         <button type="submit" name="tambah" class="btn btn-primary">Submit</button>

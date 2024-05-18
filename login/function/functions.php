@@ -166,3 +166,26 @@ function cari($keyword)
 
     return $rows;
 }
+
+// login
+function login($data)
+{
+    $conn = koneksi();
+
+    $username = htmlspecialchars($data['username']);
+    $password = htmlspecialchars($data['password']);
+
+    // cek dulu ussername
+    if (query("SELECT * FROM user WHERE username = '$username' && password = '$password'")) {
+
+        // set sessionnya
+        $_SESSION['login'] = true;
+        header('Location: ../admin/index.php');
+        exit;
+    } else {
+        return [
+            'error' => true,
+            'pesan' => 'username / password salah!'
+        ];
+    }
+}

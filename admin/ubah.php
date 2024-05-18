@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header('Location: ../login/login.php');
+    exit;
+}
+
+
 include 'function/functions.php';
 
 // jika gada id di url
@@ -12,7 +21,7 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 // query mahasiswa berdasarkan id
-$mtr = query("SELECT * FROM motor WHERE id_motor = $id")[0];
+$mtr = query("SELECT * FROM motor WHERE id_motor = $id");
 // cek apakah tombol sudak di tekan
 if (isset($_POST['ubah'])) {
     if (ubah($_POST) > 0) {
@@ -49,8 +58,9 @@ if (isset($_POST['ubah'])) {
 <body>
     <h1 class="text-center">ubah data motor</h1>
 
-    <form action="" method="post" class="mx-auto" style="width: 600px;">
+    <form action="" method="post" enctype="multipart/form-data" class="mx-auto" style="width: 600px;">
         <input type="hidden" name="id_motor" value="<?= $mtr['id_motor']; ?>">
+        <input type="hidden" name="gambarLama" value="<?= $mtr['foto']; ?>">
         <div class="mb-3">
             <label for="model" class="form-label">model : </label>
             <input type="text" name="model" class="form-control" id="model" required value="<?= $mtr['model']; ?>">
@@ -66,7 +76,8 @@ if (isset($_POST['ubah'])) {
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">foto : </label>
-            <input type="text" name="foto" class="form-control" id="foto" required value="<?= $mtr['foto']; ?>">
+            <img src="galery/<?= $mtr['foto']; ?>" width="50">
+            <input type="file" name="foto" class="form-control" id="foto">
         </div>
         </div>
         <button type="submit" name="ubah" class="btn btn-primary">Submit</button>

@@ -1,5 +1,6 @@
 <?php
-include 'function/functions.php';
+
+include 'admin/function/functions.php';
 $motor = query("SELECT * FROM motor");
 ?>
 
@@ -39,7 +40,7 @@ $motor = query("SELECT * FROM motor");
                         <a class="nav-link" href="#gallery">galery</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <button type="button" class="btn btn-success me-1 custom-btn me-1 mb-1 ">LOGIN</button>
+                        <a href="login/login.php" type="button" class="btn btn-success me-1 custom-btn me-1 mb-1 ">LOGIN</a>
                     </li>
                     <li class="nav-item mt-1">
                         <button type="button" class="btn btn-warning me-1 custom-btn mb-3 ">SIGN</button>
@@ -140,31 +141,7 @@ $motor = query("SELECT * FROM motor");
         </div>
 
     </section>
-    <section class="dashbor min-vh-100 pt-5 pb-5">
-        <h1 class="text-center text-white">PILIH MOTOR FAVORITE ANDA</h1>
 
-        <div class="container pt-5">
-            <div class="row">
-                <?php $i = 1;
-                foreach ($motor as $mtr) : ?>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="galery/slide6.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
-                                <h6 class="card-title"><?= $mtr['merek'] ?></h6>
-                                <p class="card-text">
-                                    <td><?= $mtr['harga'] ?></td>
-                                </p>
-
-
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
 
     <section id="gallery">
         <div class="containerg">
