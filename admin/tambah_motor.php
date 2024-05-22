@@ -7,7 +7,7 @@ if (!isset($_SESSION['login'])) {
 }
 
 
-include 'function/functions.php';
+include '../function/functions.php';
 
 if (isset($_POST['tambah'])) {
 

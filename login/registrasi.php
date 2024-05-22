@@ -1,7 +1,17 @@
 <?php
-require 'function/functions.php';
+require '../function/functions.php';
 
-// ketika tombol login di tekan
+// ketika tombol registrasi di tekan
+if (isset($_POST['registrasi'])) {
+    if (registrasi($_POST) > 0) {
+        echo "<script>
+         alert('oke sip user baru sudah di tambahkan, silahkan login bang!');
+         document.location.href = 'login.php';
+         </script>";
+    } else {
+        echo 'user gagal di tambahkan!';
+    }
+}
 ?>
 
 <!doctype html>
@@ -74,22 +84,22 @@ require 'function/functions.php';
             <div class="row tp2">
                 <div class="col-12 col-lg-6 tp3">
                     <div>
-                        <form class="formulir" style="width: 80%">
-                            <h1 class="text-center">LOGIN</h1>
+                        <form action="" method="post" class="formulir" style="width: 80%">
+                            <h1 class="text-center">REGISTRASI</h1>
                             <div class="mb-3 align-items-center">
-                                <label for="exampleInputEmail1" class="form-label">ussername</label>
-                                <input type="text" name="ussername" autofocus autocomplete="off" required class="form-control">
+                                <label for="exampleInputEmail1" class="form-label">username</label>
+                                <input type="text" name="username" autofocus autocomplete="off" required class="form-control">
 
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" required id="exampleInputPassword1">
+                                <input type="password" name="password1" class="form-control" required id="exampleInputPassword1">
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label">Konfirmasi Password</label>
-                                <input type="password" name="password" class="form-control" required id="exampleInputPassword1">
+                                <input type="password" name="password2" class="form-control" required id="exampleInputPassword1">
                             </div>
-                            <button type="submit" name="login" class="btn btn-primary">login</button>
+                            <button type="submit" name="registrasi" class="btn btn-primary">registtrasi</button>
                         </form>
                     </div>
                 </div>

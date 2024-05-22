@@ -1,6 +1,6 @@
 <?php
 
-include 'admin/function/functions.php';
+include 'function/functions.php';
 $motor = query("SELECT * FROM motor");
 ?>
 
@@ -43,7 +43,7 @@ $motor = query("SELECT * FROM motor");
                         <a href="login/login.php" type="button" class="btn btn-success me-1 custom-btn me-1 mb-1 ">LOGIN</a>
                     </li>
                     <li class="nav-item mt-1">
-                        <button type="button" class="btn btn-warning me-1 custom-btn mb-3 ">SIGN</button>
+                        <a href="login/registrasi.php" type="button" class="btn btn-warning me-1 custom-btn mb-3 ">SIGN</a>
                     </li>
                 </ul>
             </div>
@@ -95,7 +95,8 @@ $motor = query("SELECT * FROM motor");
 
     <section id="halaman2">
         <div class="container text-center">
-            <div class="row gy-4">
+            <h1 class="text-white">KOMUNITAS</h1>
+            <div class="row gy-4 mt-4">
                 <div class="col-md-6">
                     <div class="card" ">
                         <img src=" halaman/galery/bamc.png" class="card-img-top" alt="...">
@@ -144,6 +145,7 @@ $motor = query("SELECT * FROM motor");
 
 
     <section id="gallery">
+        <h1 class="text-center mb-3 text-white">galery</h1>
         <div class="containerg">
             <div class="card2">
                 <img class="foto" src="halaman/galery/slide4.jpg" alt="">
@@ -163,26 +165,68 @@ $motor = query("SELECT * FROM motor");
         </div>
     </section>
 
+
+    <!-- databes -->
+    <section class="dashbor min-vh-100 pt-5 pb-5 dashboard">
+        <h1 class="text-center text-white">PILIH MOTOR FAVORITE ANDA</h1>
+
+
+
+        <div class="container pt-5 ">
+
+            <!-- form pencarian -->
+            <form class="d-flex mb-2" role="search" action="" method="post" style="width:40%;">
+                <input class="form-control me-2" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off" autofocus>
+                <button class="btn btn-primary" type="submit" name="cari">Cari</button>
+            </form>
+
+
+            <div class="row gy-4 ">
+
+                <?php if (empty($motor)) : ?>
+                    <div class="col-md-4">
+                        <div class="card" style="width: 18rem;">
+
+                            <div class="card-body bg-danger text-center">
+                                <h5 class="card-title">DATA TIDAK DI TEMUKAN</h5>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif ?>
+                <?php $i = 1;
+                foreach ($motor as $mtr) : ?>
+                    <div class="col-md-3">
+                        <div class="card" style="width: 14rem;">
+                            <img src="admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
+                                <h6 class="card-title"><?= $mtr['merek'] ?></h6>
+                                <p class="card-text">
+                                    <td><?= $mtr['harga'] ?></td>
+                                </p>
+                                <a href="detail.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
+
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
     <footer>
         <div class="position-relative cust-foot">
             <div class="position-absolute top-0 start-0">
 
             </div>
             <div class="position-absolute top-0 start-50 translate-middle-x cust-1">copyright by emmir fahrezi</div>
-            <div class="position-absolute top-0 end-0">halo</div>
-            <div class="position-absolute top-50 start-0 translate-middle-y">hal;o</div>
-            <div class="position-absolute top-50 start-50 translate-middle">halo</div>
-            <div class="position-absolute top-50 end-0 translate-middle-y">halo</div>
-            <div class="position-absolute bottom-0 start-0">halo</div>
-            <div class="position-absolute bottom-0 start-50 translate-middle-x">halo</div>
-            <div class="position-absolute bottom-0 end-0">halo</div>
-        </div>
+
     </footer>
 
 
     <!-- javascript -->
 
     <script>
+        // js scroll index
         const navEl = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY >= 56) {

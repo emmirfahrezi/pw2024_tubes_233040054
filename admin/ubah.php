@@ -8,7 +8,7 @@ if (!isset($_SESSION['login'])) {
 }
 
 
-include 'function/functions.php';
+include '../function/functions.php';
 
 // jika gada id di url
 if (!isset($_GET['id'])) {
