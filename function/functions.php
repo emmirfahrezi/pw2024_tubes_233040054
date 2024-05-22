@@ -180,9 +180,16 @@ function login($data)
 
         if (password_verify($password, $user['password'])) {
 
-            // set sessionnya
+            // Set the session variables
             $_SESSION['login'] = true;
-            header('Location: ../admin/index.php');
+            $_SESSION['role'] = $user['role'];
+
+            // Redirect based on the user role
+            if ($user['role'] == 'admin') {
+                header('Location: ../admin/index.php');
+            } else {
+                header('Location: ../user/index.php');
+            }
             exit;
         }
     }
@@ -244,11 +251,10 @@ function registrasi($data)
     $password_baru = password_hash($password1, PASSWORD_DEFAULT);
 
     // insert ke tabel user
-
-    // insert into the user table
     $query = "INSERT INTO user
                 VALUES
-                (null, '$username', '$password_baru', 'user')"; // user adalah role user
+                (null, '$username', '$password_baru')
+                ";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));
     return mysqli_affected_rows($conn);
