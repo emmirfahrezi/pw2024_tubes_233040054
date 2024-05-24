@@ -1,13 +1,23 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['login'])) {
+    header('Location: ../login/login.php');
+    exit;
+}
 
 include '../function/functions.php';
 $motor = query("SELECT * FROM motor");
+$user = query("SELECT * FROM user");
 
 // ketika tombol cari di klik
 if (isset($_POST['cari'])) {
     $motor = cari($_POST['keyword']);
 }
+
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -120,20 +130,14 @@ if (isset($_POST['cari'])) {
                         <a class="nav-link active" aria-current="page" href="#">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">category</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">motor</a>
+                        <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                    <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
+                    <input class="form-control me-2" type="text" name="keyword" placeholder="masukan pencarian anda" aria-label="Search" autocomplete="off" autofocus>
+                    <button name="cari" class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+                <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
             </div>
         </div>
     </nav>
@@ -144,23 +148,23 @@ if (isset($_POST['cari'])) {
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="galery/slide6.jpg" class="d-block w-100" alt="...">
+                    <img src="../admin/galery/6648581ce8bbd.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block" style="z-index: 2; position: absolute; top: 50%; bottom:-50%">
-                        <h5>WELCOME USER</h5>
+                        <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="galery/slide9.jpg" class="d-block w-100" alt="...">
+                    <img src="../admin/galery/slide6.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
-                        <h5>WELCOME USER</h5>
+                        <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="..." class="d-block w-100" alt="...">
+                    <img src="../admin/galery/664c281c3476f.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
-                        <h5>WELCOME USER</h5>
+                        <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
@@ -173,47 +177,50 @@ if (isset($_POST['cari'])) {
         <h1 class="text-center text-white">PILIH MOTOR FAVORITE ANDA</h1>
 
 
-
         <div class="container pt-5 ">
 
             <!-- form pencarian -->
-            <form class="d-flex mb-4" role="search" action="" method="post" style="width:40%;">
-                <input class="form-control me-2" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off" autofocus>
-                <button class="btn btn-primary" type="submit" name="cari">Cari</button>
+            <form class="d-flex mb-2" role="search" action="" method="post" style="width:40%;">
+                <input class="form-control me-2 keyword" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off">
+                <button class="btn btn-primary tombol-cari" type="submit" name="cari">Cari</button>
             </form>
 
+            <div class="containers">
+                <div class="row gy-4 ">
 
-            <div class="row gy-4 ">
-                <?php if (empty($motor)) : ?>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;">
+                    <?php if (empty($motor)) : ?>
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
 
-                            <div class="card-body bg-danger text-center">
-                                <h5 class="card-title">DATA TIDAK DI TEMUKAN</h5>
+                                <div class="card-body bg-danger text-center">
+                                    <h5 class="card-title">DATA TIDAK DI TEMUKAN</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endif ?>
-                <?php $i = 1;
-                foreach ($motor as $mtr) : ?>
-                    <div class="col-md-3">
-                        <div class="card" style="width: 14rem;">
-                            <img src="../admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
-                                <h6 class="card-title"><?= $mtr['merek'] ?></h6>
-                                <p class="card-text">
-                                    <td><?= $mtr['harga'] ?></td>
-                                </p>
-                                <a href="details.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
+                    <?php endif ?>
+                    <?php $i = 1;
+                    foreach ($motor as $mtr) : ?>
+                        <div class="col-md-3">
+                            <div class="card" style="width: 14rem;">
+                                <img src="../admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
+                                    <h6 class="card-title"><?= $mtr['merek'] ?></h6>
+                                    <p class="card-text">
+                                        <td><?= $mtr['harga'] ?></td>
+                                    </p>
+                                    <a href="details.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </section>
+
+    <script src="../js/script.js"></script>
 
 
     <footer>copyright emmir fagrezi</footer>

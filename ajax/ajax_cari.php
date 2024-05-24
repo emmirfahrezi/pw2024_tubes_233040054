@@ -1,5 +1,5 @@
 <?php
-include '../admin/function/functions.php';
+include '../function/functions.php';
 $motor = cari($_GET['keyword']);
 ?>
 
@@ -19,7 +19,7 @@ $motor = cari($_GET['keyword']);
     foreach ($motor as $mtr) : ?>
         <div class="col-md-3">
             <div class="card" style="width: 14rem;">
-                <img src="galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
+                <img src="../admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
                     <h6 class="card-title"><?= $mtr['merek'] ?></h6>

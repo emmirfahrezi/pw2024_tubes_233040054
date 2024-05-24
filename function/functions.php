@@ -183,12 +183,13 @@ function login($data)
             // Set the session variables
             $_SESSION['login'] = true;
             $_SESSION['role'] = $user['role'];
+            $_SESSION['id_user'] = $user['id_user'];
 
             // Redirect based on the user role
             if ($user['role'] == 'admin') {
-                header('Location: ../admin/index.php');
+                header('Location: ../admin/index.php?id_user=' . $_SESSION['id_user']);
             } else {
-                header('Location: ../user/index.php');
+                header('Location: ../user/index.php?id_user=' . $_SESSION['id_user']);
             }
             exit;
         }
@@ -246,16 +247,25 @@ function registrasi($data)
         return false;
     }
 
+    // Get role from user input
+    $role = $_POST['role'];
+
     // jika username dan password sudah sesuai
     // enkripsi password
     $password_baru = password_hash($password1, PASSWORD_DEFAULT);
 
     // insert ke tabel user
-    $query = "INSERT INTO user
-                VALUES
-                (null, '$username', '$password_baru')
-                ";
+
+
+    $query = "INSERT INTO user (username, password, role)
+            VALUES
+            ('$username', '$password_baru', '$role')
+            ";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));
     return mysqli_affected_rows($conn);
 }
+
+
+
+// profile
