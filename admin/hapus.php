@@ -6,7 +6,7 @@ if (!isset($_SESSION['login'])) {
     exit;
 }
 
-require 'function/functions.php';
+require '../function/functions.php';
 
 // jika gada id di url
 if (!isset($_GET['id'])) {

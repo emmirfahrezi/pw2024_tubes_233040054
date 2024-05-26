@@ -238,7 +238,7 @@ function registrasi($data)
         return false;
     }
 
-    // jika password < 10 digit
+    // jika password < 3 digit
     if (strlen($password1) < 3) {
         echo "<script>
                 alert('password kependekan bang, buat 3 lebih digit!');
@@ -248,7 +248,7 @@ function registrasi($data)
     }
 
     // Get role from user input
-    $role = $_POST['role'];
+    $role = 'user';
 
     // jika username dan password sudah sesuai
     // enkripsi password
@@ -257,15 +257,13 @@ function registrasi($data)
     // insert ke tabel user
 
 
-    $query = "INSERT INTO user (username, password, role)
+    $foto = isset($data['foto']) && !empty($data['foto']) ? $data['foto'] : 'profil.jpg';
+
+    $query = "INSERT INTO user (username, password, role, foto)
             VALUES
-            ('$username', '$password_baru', '$role')
+            ('$username', '$password_baru', '$role', '$foto')
             ";
 
     mysqli_query($conn, $query) or die(mysqli_error($conn));
     return mysqli_affected_rows($conn);
 }
-
-
-
-// profile

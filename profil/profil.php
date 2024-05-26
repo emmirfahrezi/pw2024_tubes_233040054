@@ -66,7 +66,7 @@ if ($user['role'] == 'admin') {
 <body>
     <div class="row">
         <div class="col-4  po1">
-            <img src="slide9.jpg" alt="">
+            <img src="../admin/galery/<?= $user['foto'] ?>" alt="">
             <button type="button" class="btn btn-info mt-3">Info</button>
         </div>
         <div class="col-8">
