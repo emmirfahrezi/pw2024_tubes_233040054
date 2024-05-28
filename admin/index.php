@@ -135,8 +135,11 @@ if (isset($_POST['cari'])) {
                         <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
                     </li>
                 </ul>
+                <div class="gap">
+                    <a class="btn btn-primary mr-3" href="cetak.php" target="_blank" role="button">pdf</a>
+                    <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
 
-                <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
+                </div>
             </div>
         </div>
     </nav>

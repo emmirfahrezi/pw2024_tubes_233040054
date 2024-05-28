@@ -133,10 +133,7 @@ if (isset($_POST['cari'])) {
                         <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
                     </li>
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="text" name="keyword" placeholder="masukan pencarian anda" aria-label="Search" autocomplete="off" autofocus>
-                    <button name="cari" class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <a class="btn btn-danger" href="../admin/cetak.php" target="_blank" role="button">pdf</a>
                 <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
             </div>
         </div>

@@ -67,7 +67,7 @@ if ($user['role'] == 'admin') {
     <div class="row">
         <div class="col-4  po1">
             <img src="../admin/galery/<?= $user['foto'] ?>" alt="">
-            <a href="ubah.php?id= <?= $user['username'] ?>" type="button" class="btn btn-info mt-3">Info</a>
+            <a href="ubah.php?id= <?= $user['id_user'] ?>" type="button" class="btn btn-info mt-3">Info</a>
         </div>
         <div class="col-8">
             <h1 class="text-center">my profile</h1>
