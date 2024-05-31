@@ -267,3 +267,26 @@ function registrasi($data)
     mysqli_query($conn, $query) or die(mysqli_error($conn));
     return mysqli_affected_rows($conn);
 }
+
+// sort
+
+function sorthuruf($query)
+{
+    $conn = koneksi();
+    $result = mysqli_query($conn, $query);
+
+    if (isset($_POST['sort_huruf']) && $_POST['sort_huruf'] != '') {
+
+        $sortHuruf = $_POST['sort_huruf'] == 'a-z' ? 'ASC' : 'DESC';
+
+        $query .= " ORDER BY model $sortHuruf";
+        $result = mysqli_query($conn, $query);
+    }
+
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    return $rows;
+}

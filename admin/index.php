@@ -9,17 +9,20 @@ if (!isset($_SESSION['login'])) {
 include '../function/functions.php';
 
 
-$motor = query("SELECT * FROM motor");
-$user = query("SELECT * FROM user");
-
-// ketika tombol cari di klik
 if (isset($_POST['cari'])) {
     $motor = cari($_POST['keyword']);
+} else {
+    $motor = query("SELECT * FROM motor");
 }
 
+if (isset($_POST['sort_huruf'])) {
+    $sort_order = $_POST['sort_huruf'] == 'a-z' ? 'ASC' : 'DESC';
+    $motor = query("SELECT * FROM motor ORDER BY model $sortHuruf");
+}
+
+$user = query("SELECT * FROM user");
+
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -188,6 +191,13 @@ if (isset($_POST['cari'])) {
             <form class="d-flex mb-2" role="search" action="" method="post" style="width:40%;">
                 <input class="form-control me-2 keyword" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off">
                 <button class="btn btn-primary tombol-cari" type="submit" name="cari">Cari</button>
+
+                <select name="sort_huruf" class="form-select me-2">
+                    <option value="" class="text-center">------urutkan------</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                </select>
+                <button class="btn btn-primary tombol-cari" type="submit" name="urutkan">urutkan</button>
             </form>
 
             <div class="containers">
