@@ -7,17 +7,48 @@ if (!isset($_SESSION['login'])) {
 }
 
 include '../function/functions.php';
-$motor = query("SELECT * FROM motor");
-$user = query("SELECT * FROM user");
 
-// ketika tombol cari di klik
+
 if (isset($_POST['cari'])) {
     $motor = cari($_POST['keyword']);
+} else {
+    $motor = query("SELECT * FROM motor");
 }
 
+
+if (isset($_POST['sort_option'])) {
+    $sort_option = $_POST['sort_option'];
+    switch ($sort_option) {
+        case 'model_a-z':
+            $motor = query("SELECT * FROM motor ORDER BY model ASC");
+            break;
+        case 'model_z-a':
+            $motor = query("SELECT * FROM motor ORDER BY model DESC");
+            break;
+        case 'merek_a-z':
+            $motor = query("SELECT * FROM motor ORDER BY merek ASC");
+            break;
+        case 'merek_z-a':
+            $motor = query("SELECT * FROM motor ORDER BY merek DESC");
+            break;
+        case 'harga_low-high':
+            $motor = query("SELECT * FROM motor ORDER BY harga ASC");
+            break;
+        case 'harga_high-low':
+            $motor = query("SELECT * FROM motor ORDER BY harga DESC");
+            break;
+        default:
+            $motor = query("SELECT * FROM motor");
+            break;
+    }
+} else {
+    $motor = query("SELECT * FROM motor");
+}
+
+
+$user = query("SELECT * FROM user");
+
 ?>
-
-
 
 <!doctype html>
 <html lang="en">
@@ -69,7 +100,7 @@ if (isset($_POST['cari'])) {
 
 
         .dashboard {
-            background-color: #333333;
+            background-color: #404345;
             width: 100%;
         }
 
@@ -106,7 +137,7 @@ if (isset($_POST['cari'])) {
 
 
         footer {
-            background-color: #333;
+            background-color: rgb(27, 26, 26);
             color: white;
             text-align: center;
             padding: 10px;
@@ -132,9 +163,13 @@ if (isset($_POST['cari'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
                     </li>
+
                 </ul>
-                <a class="btn btn-danger" href="../admin/cetak.php" target="_blank" role="button">pdf</a>
-                <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
+                <div class="gap">
+                    <a class="btn btn-primary mr-3" href="../admin/cetak.php" target="_blank" role="button">pdf</a>
+                    <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
+
+                </div>
             </div>
         </div>
     </nav>
@@ -145,14 +180,14 @@ if (isset($_POST['cari'])) {
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../admin/galery/6648581ce8bbd.jpg" class="d-block w-100" alt="...">
+                    <img src="../admin/galery/slide6.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block" style="z-index: 2; position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../admin/galery/slide6.jpg" class="d-block w-100" alt="...">
+                    <img src="../admin/galery/6648581ce8bbd.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
@@ -176,10 +211,22 @@ if (isset($_POST['cari'])) {
 
         <div class="container pt-5 ">
 
+
             <!-- form pencarian -->
             <form class="d-flex mb-2" role="search" action="" method="post" style="width:40%;">
                 <input class="form-control me-2 keyword" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off">
                 <button class="btn btn-primary tombol-cari" type="submit" name="cari">Cari</button>
+
+                <select name="sort_option">
+                    <option value="" class="text-center">------urutkan------</option>
+                    <option value="model_a-z">Model A-Z</option>
+                    <option value="model_z-a">Model Z-A</option>
+                    <option value="merek_a-z">Merek A-Z</option>
+                    <option value="merek_z-a">Merek Z-A</option>
+                    <option value="harga_low-high">Harga Terendah-Tertinggi</option>
+                    <option value="harga_high-low">Harga Tertinggi-Terendah</option>
+                </select>
+                <button class="btn btn-primary tombol-cari" type="submit" name="urutkan">urutkan</button>
             </form>
 
             <div class="containers">
@@ -204,7 +251,7 @@ if (isset($_POST['cari'])) {
                                     <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
                                     <h6 class="card-title"><?= $mtr['merek'] ?></h6>
                                     <p class="card-text">
-                                        <td><?= $mtr['harga'] ?></td>
+                                        <td><?= number_format($mtr['harga'], 0, ',', '.') ?></td>
                                     </p>
                                     <a href="details.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
 

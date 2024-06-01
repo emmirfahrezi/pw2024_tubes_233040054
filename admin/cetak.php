@@ -30,7 +30,7 @@ foreach ($motor as $m) {
                 <td>' . $no++ . '</td>
                 <td>' . $m['model'] . '</td>
                 <td>' . $m['merek'] . '</td>
-                <td>' . $m['harga'] . '</td>
+                <td>' . number_format($m['harga'], 0, ',', '.') . '</td>
                 <td><img src="galery/' . $m['foto'] . '" width="50"></td>
             </tr>';
 }

@@ -15,10 +15,36 @@ if (isset($_POST['cari'])) {
     $motor = query("SELECT * FROM motor");
 }
 
-if (isset($_POST['sort_huruf'])) {
-    $sort_huruf = $_POST['sort_huruf'] == 'a-z' ? 'ASC' : 'DESC';
-    $motor = query("SELECT * FROM motor ORDER BY model $sort_huruf");
+
+if (isset($_POST['sort_option'])) {
+    $sort_option = $_POST['sort_option'];
+    switch ($sort_option) {
+        case 'model_a-z':
+            $motor = query("SELECT * FROM motor ORDER BY model ASC");
+            break;
+        case 'model_z-a':
+            $motor = query("SELECT * FROM motor ORDER BY model DESC");
+            break;
+        case 'merek_a-z':
+            $motor = query("SELECT * FROM motor ORDER BY merek ASC");
+            break;
+        case 'merek_z-a':
+            $motor = query("SELECT * FROM motor ORDER BY merek DESC");
+            break;
+        case 'harga_low-high':
+            $motor = query("SELECT * FROM motor ORDER BY harga ASC");
+            break;
+        case 'harga_high-low':
+            $motor = query("SELECT * FROM motor ORDER BY harga DESC");
+            break;
+        default:
+            $motor = query("SELECT * FROM motor");
+            break;
+    }
+} else {
+    $motor = query("SELECT * FROM motor");
 }
+
 
 $user = query("SELECT * FROM user");
 
@@ -138,7 +164,7 @@ $user = query("SELECT * FROM user");
                         <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../order/order.php">order konsumen</a>
+                        <a class="nav-link " aria-current="page" href="../order/order.php">order konsumen</a>
                     </li>
                 </ul>
                 <div class="gap">
@@ -195,10 +221,14 @@ $user = query("SELECT * FROM user");
                 <input class="form-control me-2 keyword" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off">
                 <button class="btn btn-primary tombol-cari" type="submit" name="cari">Cari</button>
 
-                <select name="sort_huruf" class="form-select me-2">
+                <select name="sort_option">
                     <option value="" class="text-center">------urutkan------</option>
-                    <option value="a-z">A-Z</option>
-                    <option value="z-a">Z-A</option>
+                    <option value="model_a-z">Model A-Z</option>
+                    <option value="model_z-a">Model Z-A</option>
+                    <option value="merek_a-z">Merek A-Z</option>
+                    <option value="merek_z-a">Merek Z-A</option>
+                    <option value="harga_low-high">Harga Terendah-Tertinggi</option>
+                    <option value="harga_high-low">Harga Tertinggi-Terendah</option>
                 </select>
                 <button class="btn btn-primary tombol-cari" type="submit" name="urutkan">urutkan</button>
             </form>
@@ -225,7 +255,7 @@ $user = query("SELECT * FROM user");
                                     <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
                                     <h6 class="card-title"><?= $mtr['merek'] ?></h6>
                                     <p class="card-text">
-                                        <td><?= $mtr['harga'] ?></td>
+                                        <td><?= number_format($mtr['harga'], 0, ',', '.') ?></td>
                                     </p>
                                     <a href="details.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
 
