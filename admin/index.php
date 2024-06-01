@@ -134,8 +134,54 @@ $user = query("SELECT * FROM user");
             line-height: 2;
         }
 
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
 
+        @media (max-width: 968px) {
+            .carousel-item img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
 
+        @media (max-width: 1968px) {
+            .carousel-item img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .card {
+                width: 150px !important;
+                height: 250px !important;
+            }
+
+            .card h5 {
+                font-size: 16px !important;
+            }
+
+            .card h6 {
+                font-size: 15px !important;
+            }
+
+            .card img {
+                height: 100px !important;
+            }
+
+            .carousel-caption h5 {
+                font-size: 30px;
+            }
+        }
+
+        /* end responsive */
         footer {
             background-color: rgb(27, 26, 26);
             color: white;
@@ -183,21 +229,21 @@ $user = query("SELECT * FROM user");
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="galery/slide6.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 2; position: absolute; top: 50%; bottom:-50%">
+                    <div class="carousel-caption  d-sm-block" style="z-index: 10; position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME BACK ADMIN TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="galery/6648581ce8bbd.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
+                    <div class="carousel-caption  d-sm-block" style="z-index: 10;  position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME BACK ADMIN TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="galery/664c281c3476f.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block" style="z-index: 2;  position: absolute; top: 50%; bottom:-50%">
+                    <div class="carousel-caption  d-sm-block" style="z-index: 10;  position: absolute; top: 50%; bottom:-50%">
                         <h5>WELCOME BACK ADMIN TO MONAV CLASSIC</h5>
                         <p>Temukan motor impian mu disini</p>
                     </div>
@@ -217,20 +263,23 @@ $user = query("SELECT * FROM user");
             <a class="btn btn-primary mb-2" href="tambah_motor.php" role="button">TAMBAH MOTOR</a>
 
             <!-- form pencarian -->
-            <form class="d-flex mb-2" role="search" action="" method="post" style="width:40%;">
-                <input class="form-control me-2 keyword" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off">
-                <button class="btn btn-primary tombol-cari" type="submit" name="cari">Cari</button>
-
-                <select name="sort_option">
-                    <option value="" class="text-center">------urutkan------</option>
-                    <option value="model_a-z">Model A-Z</option>
-                    <option value="model_z-a">Model Z-A</option>
-                    <option value="merek_a-z">Merek A-Z</option>
-                    <option value="merek_z-a">Merek Z-A</option>
-                    <option value="harga_low-high">Harga Terendah-Tertinggi</option>
-                    <option value="harga_high-low">Harga Tertinggi-Terendah</option>
-                </select>
-                <button class="btn btn-primary tombol-cari" type="submit" name="urutkan">urutkan</button>
+            <form class="mb-2" role="search" action="" method="post">
+                <div class="d-flex" style="width:40%;">
+                    <input class="form-control me-2 keyword" type="search" aria-label="search" name="keyword" size="40" placeholder="masukan keyword pencarian" autocomplete="off">
+                    <button class="btn btn-primary tombol-cari" type="submit" name="cari">Cari</button>
+                </div>
+                <div class="d-flex mt-2" style="width:40%;">
+                    <select name="sort_option">
+                        <option value="" class="text-center">------urutkan------</option>
+                        <option value="model_a-z">Model A-Z</option>
+                        <option value="model_z-a">Model Z-A</option>
+                        <option value="merek_a-z">Merek A-Z</option>
+                        <option value="merek_z-a">Merek Z-A</option>
+                        <option value="harga_low-high">Harga Terendah-Tertinggi</option>
+                        <option value="harga_high-low">Harga Tertinggi-Terendah</option>
+                    </select>
+                    <button class="btn btn-primary tombol-cari" type="submit" name="urutkan">urutkan</button>
+                </div>
             </form>
 
             <div class="containers">
@@ -248,7 +297,7 @@ $user = query("SELECT * FROM user");
                     <?php endif ?>
                     <?php $i = 1;
                     foreach ($motor as $mtr) : ?>
-                        <div class="col-md-3">
+                        <div class="col-md-3 col-sm-6 col-6">
                             <div class="card" style="width: 14rem;">
                                 <img src="galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                                 <div class="card-body">
