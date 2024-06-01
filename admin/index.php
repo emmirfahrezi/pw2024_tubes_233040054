@@ -16,8 +16,8 @@ if (isset($_POST['cari'])) {
 }
 
 if (isset($_POST['sort_huruf'])) {
-    $sort_order = $_POST['sort_huruf'] == 'a-z' ? 'ASC' : 'DESC';
-    $motor = query("SELECT * FROM motor ORDER BY model $sortHuruf");
+    $sort_huruf = $_POST['sort_huruf'] == 'a-z' ? 'ASC' : 'DESC';
+    $motor = query("SELECT * FROM motor ORDER BY model $sort_huruf");
 }
 
 $user = query("SELECT * FROM user");
@@ -136,6 +136,9 @@ $user = query("SELECT * FROM user");
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../order/order.php">order konsumen</a>
                     </li>
                 </ul>
                 <div class="gap">
