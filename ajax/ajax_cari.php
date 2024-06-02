@@ -17,7 +17,7 @@ $motor = cari($_GET['keyword']);
     <?php endif ?>
     <?php $i = 1;
     foreach ($motor as $mtr) : ?>
-        <div class="col-md-3 col-md-6 col-6">
+        <div class="col-md-3 col-6">
             <div class="card" style="width: 14rem;">
                 <img src="../admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                 <div class="card-body">

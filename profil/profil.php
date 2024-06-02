@@ -60,16 +60,54 @@ if ($user['role'] == 'admin') {
             align-items: center;
             flex-direction: column;
         }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            img {
+                margin-top: -30px;
+                height: 130px;
+                width: 130px;
+                object-fit: cover;
+            }
+
+            h1 {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+
+            .card-body {
+                padding: 0 0;
+            }
+
+            .row {
+                width: 68%;
+                height: 500px;
+                background-color: whitesmoke;
+                border: 5px solid white;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .po1 {
+                display: flex;
+                padding: 30px;
+                margin-top: 40px;
+                align-items: center;
+                flex-direction: column;
+            }
+
+
+        }
     </style>
 </head>
 
 <body>
     <div class="row">
-        <div class="col-4  po1">
+        <div class="col-md-4 col-12 po1">
             <img src="../admin/galery/<?= $user['foto'] ?>" alt="">
-            <a href="ubah.php?id= <?= $user['id_user'] ?>" type="button" class="btn btn-info mt-3">Info</a>
+            <a href="ubah.php?id= <?= $user['id_user'] ?>" type="button" class="btn btn-info mt-3" style="font-size:10px;">Info</a>
         </div>
-        <div class="col-8">
+        <div class="col-md-8 col-12">
             <h1 class="text-center">my profile</h1>
             <form class="mb-auto">
 
