@@ -1,7 +1,13 @@
 <?php
 
 include 'function/functions.php';
-$motor = query("SELECT * FROM motor");
+$jumlahDataPerHalaman = 4;
+$jumlahData = count(query("SELECT * FROM motor"));
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif = (isset($_GET['halaman'])) ? $_GET['halaman'] : 1;
+$awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+
+$motor = query("SELECT * FROM motor LIMIT $awalData, $jumlahDataPerHalaman");
 ?>
 
 <!doctype html>
@@ -97,17 +103,17 @@ $motor = query("SELECT * FROM motor");
         <div class="container text-center">
             <h1 class="text-white">KOMUNITAS</h1>
             <div class="row gy-4 mt-4">
-                <div class="col-md-6">
-                    <div class="card" ">
-                        <img src=" halaman/galery/bamc.png" class="card-img-top" alt="...">
+                <div class="col-md-6 col-12">
+                    <div class="card c1">
+                        <img src=" halaman/galery/bamc.png" class="img-fluid rounded-start" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">BAMC</h5>
                             <p class="card-text">Black angels motorcycle club adalah komunitas motor tertua di indonesia, yang didirikan sejak tahun 1979.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card mb-3" style="max-width: 540px;">
+                <div class="col-md-6 col-12 ">
+                    <div class="card c1 mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="halaman/galery/bbmc.png" class="img-fluid rounded-start" alt="...">
@@ -121,7 +127,7 @@ $motor = query("SELECT * FROM motor");
                             </div>
                         </div>
                     </div>
-                    <div class="card mb-3" style="max-width: 540px;">
+                    <div class="card c1 mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <img src="halaman/galery/hdci.png" class="img-fluid rounded-start" alt="...">
@@ -174,13 +180,21 @@ $motor = query("SELECT * FROM motor");
 
         <div class="container pt-5 ">
 
+            <ul class="pagination">
+                <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                    <?php if ($i == $halamanAktif) : ?>
+                        <li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                    <?php else : ?>
+                        <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
+                    <?php endif; ?>
+                <?php endfor; ?>
 
-
+            </ul>
 
             <div class="row gy-4 ">
                 <?php $i = 1;
                 foreach ($motor as $mtr) : ?>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-6 col-6">
                         <div class="card" style="width: 14rem;">
                             <img src="admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                             <div class="card-body">
