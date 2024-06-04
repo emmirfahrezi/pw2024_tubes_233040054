@@ -105,7 +105,10 @@ $motor = query("SELECT * FROM motor LIMIT $awalData, $jumlahDataPerHalaman");
             <div class="row gy-4 mt-4">
                 <div class="col-md-6 col-12">
                     <div class="card c1">
-                        <img src=" halaman/galery/bamc.png" class="img-fluid rounded-start" alt="...">
+                        <div>
+                            <img src=" halaman/galery/bamc.png" class="img-fluid rounded-start" alt="...">
+
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">BAMC</h5>
                             <p class="card-text">Black angels motorcycle club adalah komunitas motor tertua di indonesia, yang didirikan sejak tahun 1979.</p>

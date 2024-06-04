@@ -180,12 +180,12 @@ function login($data)
 
         if (password_verify($password, $user['password'])) {
 
-            // Set the session variables
+            // Setvariables
             $_SESSION['login'] = true;
             $_SESSION['role'] = $user['role'];
             $_SESSION['id_user'] = $user['id_user'];
 
-            // Redirect based on the user role
+            // cek kondisi admin atau user
             if ($user['role'] == 'admin') {
                 header('Location: ../admin/index.php?id_user=' . $_SESSION['id_user']);
             } else {
@@ -289,4 +289,78 @@ function sorthuruf($query)
     }
 
     return $rows;
+}
+
+// edit profile
+function edit($data)
+{
+    $conn = koneksi();
+
+    $id_user = ($data['id_user']);
+    $username = htmlspecialchars($data['username']);
+    $gambarLama = htmlspecialchars($data['gambarLama']);
+
+    // cek apakah user pilih gambar baru atau tidak
+    if ($_FILES['foto']['error'] === 4) {
+        $foto = $gambarLama;
+    } else {
+        $foto = upuser();
+    }
+
+    $query = "UPDATE user SET 
+                username = '$username',
+                foto = '$foto'
+                WHERE id_user = $id_user
+                ";
+    mysqli_query($conn, $query) or die(mysqli_error($conn));
+
+    echo mysqli_error($conn);
+
+    return mysqli_affected_rows($conn);
+}
+
+
+// up user
+function upuser()
+{
+    $namaFile = $_FILES['foto']['name'];
+    $ukuranFile = $_FILES['foto']['size'];
+    $error = $_FILES['foto']['error'];
+    $tmpName = $_FILES['foto']['tmp_name'];
+
+    // cek apakah tidak ada gambar di upload
+    if ($error === 4) {
+        echo "<script>
+                alert('pilih gambar terlebih dahulu!');
+                </script>";
+        return false;
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $ekstensiGambarValid = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambar = explode('.', $namaFile);
+    $ekstensiGambar = strtolower(end($ekstensiGambar));
+    if (!in_array($ekstensiGambar, $ekstensiGambarValid)) {
+        echo "<script>
+                alert('yang anda upload bukan gambar!');
+                </script>";
+        return false;
+    }
+
+    // ukuran terlalu besar
+    if ($ukuranFile > 5000000) {
+        echo "<script>
+                alert('ukuran gambar terlalu besar!');
+                </script>";
+        return false;
+    }
+
+    // lolos pengecekan, gambar siap diupload
+    // generate nama gambar baru
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiGambar;
+
+    move_uploaded_file($tmpName, '../admin/galery/' . $namaFileBaru);
+    return $namaFileBaru;
 }

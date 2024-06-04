@@ -207,7 +207,7 @@ $user = query("SELECT * FROM user");
                         <a class="nav-link active" aria-current="page" href="#">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../profil/profil.php?id_user=<?php echo $_SESSION['id_user']; ?>">profile</a>
+                        <a class="nav-link" href="../profil/profil.php?id=<?php echo $_SESSION['id_user']; ?>">profile</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="../order/order.php">order konsumen</a>

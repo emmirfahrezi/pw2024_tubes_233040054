@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if (isset($_SESSION['login'])) {
     if ($_SESSION['role'] == 'admin') {
         header('Location: ../admin/index.php');
@@ -102,6 +103,10 @@ if (isset($_POST['login'])) {
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                 <input type="password" name="password" class="form-control" required id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-4">
+                                <input type="checkbox" name="remember">
+                                <label for="remember" class="form-label">Remember me</label>
                             </div>
                             <button type="submit" name="login" class="btn btn-primary">login</button>
                             <br>

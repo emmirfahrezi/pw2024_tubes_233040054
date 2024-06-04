@@ -1,8 +1,9 @@
 <?php
 session_start();
+
 require '../function/functions.php';
 // Get id_user from the URL
-$id = $_GET['id_user'];
+$id = $_GET['id'];
 
 // Query user based on id_user
 $user = query("SELECT * FROM user WHERE id_user = $id");
@@ -105,7 +106,7 @@ if ($user['role'] == 'admin') {
     <div class="row">
         <div class="col-md-4 col-12 po1">
             <img src="../admin/galery/<?= $user['foto'] ?>" alt="">
-            <a href="ubah.php?id= <?= $user['id_user'] ?>" type="button" class="btn btn-info mt-3" style="font-size:10px;">Info</a>
+            <a href="ubah.php?id=<?php echo $_SESSION['id_user']; ?>" type="button" class="btn btn-info mt-3" style="font-size:10px;">Info</a>
         </div>
         <div class="col-md-8 col-12">
             <h1 class="text-center">my profile</h1>
