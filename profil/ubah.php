@@ -43,7 +43,7 @@ if (isset($_POST['edit'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ubah data motor</title>
+    <title>ubah data user</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
         * {
@@ -52,11 +52,18 @@ if (isset($_POST['edit'])) {
             box-sizing: border-box;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
+
+        @media (max-width: 500px) {
+            form {
+                padding: 30px;
+                width: 100% !important;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <h1 class="text-center">ubah data motor</h1>
+    <h1 class="text-center">ubah profile anda</h1>
 
     <form action="" method="post" enctype="multipart/form-data" class="mx-auto" style="width: 600px;">
         <input type="hidden" name="id_user" value="<?= $usr['id_user']; ?>">

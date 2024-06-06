@@ -11,6 +11,8 @@ if (isset($_SESSION['login'])) {
     exit;
 }
 
+$backLink = '../index.php';
+
 
 require '../function/functions.php';
 
@@ -90,7 +92,7 @@ if (isset($_POST['login'])) {
             <div class="row tp2">
                 <div class="col-12 col-lg-6 tp3">
                     <div>
-                        <form class="formulir" action="" method="post" style="width: 80%">
+                        <form class="formulir" action="" method="post" style="width: 90%">
                             <h1 class="text-center">LOGIN</h1>
                             <div class="mb-3 align-items-center">
                                 <label for="exampleInputEmail1" class="form-label">username</label>
@@ -104,16 +106,16 @@ if (isset($_POST['login'])) {
                                 <label for="exampleInputPassword1" class="form-label">Password</label>
                                 <input type="password" name="password" class="form-control" required id="exampleInputPassword1">
                             </div>
-                            <div class="mb-4">
-                                <input type="checkbox" name="remember">
-                                <label for="remember" class="form-label">Remember me</label>
-                            </div>
-                            <button type="submit" name="login" class="btn btn-primary">login</button>
+                            <button type="submit" name="login" class="btn btn-primary mb-4">login</button>
+                            <a href="registrasi.php" style="color:white; font-size:10px;">belum punya akun? klik disini!
+                            </a>
                             <br>
-                            <a href="../index.php" style="color:brown;""><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                            <a href="<?= $backLink ?>" style="color:brown;"><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
                                 </svg>kembali
                             </a>
+                            <br>
+
                         </form>
                     </div>
                 </div>

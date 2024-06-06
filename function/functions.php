@@ -36,6 +36,7 @@ function tambah($data)
 
     $model = htmlspecialchars($data['model']);
     $merek = htmlspecialchars($data['merek']);
+    $deskripsi = htmlspecialchars($data['deskripsi']);
     $harga = htmlspecialchars($data['harga']);
 
     // upload gambar
@@ -46,7 +47,7 @@ function tambah($data)
 
     $query = "INSERT INTO motor
                 VALUES
-                (null, '$model', '$merek', '$harga', '$foto');
+                (null, '$model','$deskripsi', '$merek', '$harga', '$foto');
 
                 ";
     mysqli_query($conn, $query) or die(mysqli_error($conn));
@@ -118,6 +119,7 @@ function ubah($data)
 
     $id_motor = htmlspecialchars($data['id_motor']);
     $model = htmlspecialchars($data['model']);
+    $deskripsi = htmlspecialchars($data['deskripsi']);
     $merek = htmlspecialchars($data['merek']);
     $harga = htmlspecialchars($data['harga']);
     $gambarLama = htmlspecialchars($data['gambarLama']);
@@ -131,6 +133,7 @@ function ubah($data)
 
     $query = "UPDATE motor SET 
                 model = '$model',
+                deskripsi = '$deskripsi',
                 merek = '$merek',
                 harga = '$harga',
                 foto = '$foto'

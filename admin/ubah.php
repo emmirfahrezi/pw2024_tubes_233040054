@@ -66,6 +66,10 @@ if (isset($_POST['ubah'])) {
             <input type="text" name="model" class="form-control" id="model" required value="<?= $mtr['model']; ?>">
         </div>
         <div class="mb-3">
+            <label for="deskripsi" class="form-label">deskripsi : </label>
+            <input type="text" name="deskripsi" class="form-control" maxlength="555" id="deskripsi" required>
+        </div>
+        <div class="mb-3">
             <label for="merek" class="form-label">merek : </label>
             <input type="text" name="merek" class="form-control" id="merek" required value="<?= $mtr['merek']; ?>">
         </div>

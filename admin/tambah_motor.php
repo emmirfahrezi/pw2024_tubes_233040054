@@ -26,6 +26,7 @@ if (isset($_POST['tambah'])) {
         </script>";
     }
 }
+
 ?>
 
 
@@ -38,15 +39,24 @@ if (isset($_POST['tambah'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>tambah data motor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+        form {
+            padding: 30px;
+        }
+    </style>
 </head>
 
 <body>
     <h1 class="text-center">tambah data motor</h1>
 
-    <form action="" method="post" enctype="multipart/form-data" class="mx-auto" style="width: 600px;">
+    <form action="" method="post" enctype="multipart/form-data" class="mx-auto" style="width: 100%;">
         <div class="mb-3">
             <label for="model" class="form-label">model : </label>
             <input type="text" name="model" class="form-control" id="model" required>
+        </div>
+        <div class="mb-3">
+            <label for="deskripsi" class="form-label">deskripsi : </label>
+            <input type="text" name="deskripsi" class="form-control" maxlength="555" id="deskripsi" required>
         </div>
         <div class="mb-3">
             <label for="merek" class="form-label">merek : </label>
@@ -62,7 +72,11 @@ if (isset($_POST['tambah'])) {
             <input type="file" name="foto" class="form-control" id="foto" required>
         </div>
         </div>
-        <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
+        <div>
+            <button type="submit" name="tambah" class="btn btn-primary">Submit</button>
+            <a href="index.php" type="button" class="btn btn-warning">kembali</a>
+        </div>
+
     </form>
 
 
