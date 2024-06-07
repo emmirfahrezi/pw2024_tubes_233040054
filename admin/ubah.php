@@ -52,6 +52,19 @@ if (isset($_POST['ubah'])) {
             box-sizing: border-box;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         }
+
+        form {
+            width: 100%;
+            padding: 30px;
+        }
+
+        @media (max-width: 500px) {
+            form {
+                padding: 30px;
+                width: 100% !important;
+
+            }
+        }
     </style>
 </head>
 
@@ -67,7 +80,7 @@ if (isset($_POST['ubah'])) {
         </div>
         <div class="mb-3">
             <label for="deskripsi" class="form-label">deskripsi : </label>
-            <input type="text" name="deskripsi" class="form-control" maxlength="555" id="deskripsi" required>
+            <input type="text" name="deskripsi" class="form-control" maxlength="555" id="deskripsi" required value="<?= $mtr['deskripsi']; ?>">
         </div>
         <div class="mb-3">
             <label for="merek" class="form-label">merek : </label>

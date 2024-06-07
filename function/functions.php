@@ -215,7 +215,7 @@ function registrasi($data)
 
     // jika username / password kosong
 
-    if (empty($username) || empty($password2) || empty($password2)) {
+    if (empty($username) || empty($password1) || empty($password2)) {
         echo "<script>
                 alert('username / password tidak boleh kosong!');
                 document.location.href = 'registrasi.php';
@@ -252,8 +252,6 @@ function registrasi($data)
 
     // Get role from user input
     $role = 'user';
-
-    // jika username dan password sudah sesuai
     // enkripsi password
     $password_baru = password_hash($password1, PASSWORD_DEFAULT);
 

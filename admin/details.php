@@ -50,6 +50,38 @@ $mtr = query("SELECT * FROM motor WHERE id_motor=$id"); ?>
             background-color: grey;
             width: 100%;
         }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+            .card {
+                width: 500px !important;
+
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                width: 400px !important;
+
+            }
+        }
+
+        @media (max-width: 420px) {
+            .card {
+                width: 300px !important;
+
+            }
+
+            img {
+                width: 200px !important;
+                height: 120px !important;
+            }
+
+            p {
+                font-size: 12px !important;
+            }
+        }
     </style>
 </head>
 

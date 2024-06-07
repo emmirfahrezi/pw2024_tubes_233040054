@@ -74,7 +74,7 @@ if (isset($_POST['edit'])) {
         </div>
         <div class="mb-3">
             <label for="foto" class="form-label">foto : </label>
-            <img src="galery/<?= $usr['foto']; ?>" width="50">
+            <img src="../admin/galery/<?= $usr['foto']; ?>" width="50">
             <input type="file" name="foto" class="form-control" id="foto">
         </div>
         </div>

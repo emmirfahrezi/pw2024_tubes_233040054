@@ -6,30 +6,32 @@ body{
 
 }
 
-.navbar{
-    padding: 0 20px;
-    width: 100%;
-    z-index: 1000;
-    top: 0;
+.navbar {
+    position: fixed;
+    background-color: transparent;
+    padding: 10px 20px;
     transition: 0.5s;
+
 }
 
-.navbar-brand{
-    font-family: "Pacifico", cursive;
-    font-weight: 400;
-}
-
-.navbar-brand span{
+.navbar-brand span {
     color: #f0c929;
+    font-family: "Pacifico", cursive;
+
 
 }
 
 .navbar-scrolled {
     background-color: black;
-    box-shadow:     0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
+.navbar-brand {
 
+    font-family: "Pacifico", cursive;
+
+
+}
 
 
 /* .carousel-item {
