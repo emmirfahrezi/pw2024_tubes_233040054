@@ -3,15 +3,14 @@ body{
     margin: 0;
     padding: 0;
     background-color: #404345;
-
 }
+
 
 .navbar {
     position: fixed;
     background-color: transparent;
-    padding: 10px 20px;
+    padding: 5px 20px;
     transition: 0.5s;
-
 }
 
 .navbar-brand span {
@@ -21,11 +20,6 @@ body{
 
 }
 
-.navbar-scrolled {
-    background-color: black;
-    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-}
-
 .navbar-brand {
 
     font-family: "Pacifico", cursive;
@@ -33,6 +27,10 @@ body{
 
 }
 
+.navbar-scrolled {
+    background-color: black;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
 
 /* .carousel-item {
     height: 80vh;
@@ -73,8 +71,10 @@ body{
     z-index: 1;
 }
 
-
-
+#about{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 
 #halaman2{
     background-color: #404345;
@@ -194,13 +194,7 @@ svg{
         
     }
     .carousel-caption p {
-        width: 80%;
-        
-        
-    }
-    .navbar{
-        height: 60px;
-    }
+        width: 80%; }
 }
 
 @media (max-width: 968px) {

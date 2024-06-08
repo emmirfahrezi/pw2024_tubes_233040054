@@ -9,7 +9,7 @@ function query($sql)
 {
     // koneksi ke database
     $conn = koneksi();
-    // lakukan query untuk mengambil data mahasiswa
+    // lakukan query untuk mengambil data
     $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
 
     //jika hasilnya hanya satu\

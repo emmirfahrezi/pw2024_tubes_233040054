@@ -87,47 +87,46 @@ if (isset($_POST['login'])) {
 </head>
 
 <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
-    <div>
-        <div class="container mx-auto custom-width tp">
-            <div class="row tp2">
-                <div class="col-12 col-lg-6 tp3">
-                    <div>
-                        <form class="formulir" action="" method="post" style="width: 90%">
-                            <h1 class="text-center">LOGIN</h1>
-                            <div class="mb-3 align-items-center">
-                                <label for="exampleInputEmail1" class="form-label">username</label>
-                                <input type="text" name="username" autofocus autocomplete="off" required class="form-control">
-                                <?php if (isset($login['error'])) : ?>
-                                    <p style="color: red; font-style: italic;"><?= $login['pesan']; ?></p>
-                                <?php endif; ?>
+    <div class="container mx-auto custom-width tp">
+        <div class="row tp2">
+            <div class="col-12 col-lg-6 tp3">
+                <div>
+                    <form class="formulir" action="" method="post" style="width: 90%">
+                        <h1 class="text-center">LOGIN</h1>
+                        <div class="mb-3 align-items-center">
+                            <label for="exampleInputEmail1" class="form-label">username</label>
+                            <input type="text" name="username" autofocus autocomplete="off" required class="form-control">
+                            <?php if (isset($login['error'])) : ?>
+                                <p style="color: red; font-style: italic;"><?= $login['pesan']; ?></p>
+                            <?php endif; ?>
 
-                            </div>
-                            <div class="mb-4">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control" required id="exampleInputPassword1">
-                            </div>
-                            <button type="submit" name="login" class="btn btn-primary mb-4">login</button>
-                            <a href="registrasi.php" style="color:white; font-size:10px;">belum punya akun? klik disini!
-                            </a>
-                            <br>
-                            <a href="<?= $backLink ?>" style="color:brown;"><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
-                                </svg>kembali
-                            </a>
-                            <br>
+                        </div>
+                        <div class="mb-4">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" required id="exampleInputPassword1">
+                        </div>
+                        <button type="submit" name="login" class="btn btn-primary mb-4">login</button>
+                        <a href="registrasi.php" style="color:white; font-size:10px;">belum punya akun? klik disini!
+                        </a>
+                        <br>
+                        <a href="<?= $backLink ?>" style="color:brown;"><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                            </svg>kembali
+                        </a>
+                        <br>
 
-                        </form>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 cust-bg d-none d-lg-block">
-                    <h1>MONAV
-                        CLASSICS
-                    </h1>
+                    </form>
                 </div>
             </div>
+            <div class="col-12 col-lg-6 cust-bg d-none d-lg-block">
+                <h1>MONAV
+                    CLASSICS
+                </h1>
+            </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -36,22 +36,22 @@ $motor = query("SELECT * FROM motor LIMIT $awalData, $jumlahDataPerHalaman");
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto text-center">
-                    <li class="nav-item mt-1">
+                    <li class="nav-item mt-3">
                         <a class="nav-link active" aria-current="page" href="#halamansec">home</a>
                     </li>
-                    <li class="nav-item mt-1">
+                    <li class="nav-item mt-3">
                         <a class="nav-link" href="#halaman2">comunity</a>
                     </li>
-                    <li class="nav-item mt-1">
+                    <li class="nav-item mt-3">
                         <a class="nav-link" href="#gallery">galery</a>
                     </li>
-                    <li class="nav-item mt-1">
+                    <li class="nav-item mt-3">
                         <a class="nav-link" href="#dafmo">motor</a>
                     </li>
-                    <li class="nav-item mt-1">
+                    <li class="nav-item mt-3">
                         <a href="login/login.php" type="button" class="btn btn-success me-1 custom-btn me-1 mb-1 ">LOGIN</a>
                     </li>
-                    <li class="nav-item mt-1">
+                    <li class="nav-item mt-3">
                         <a href="login/registrasi.php" type="button" class="btn btn-warning me-1 custom-btn mb-3 ">SIGN</a>
                     </li>
                 </ul>
@@ -71,14 +71,14 @@ $motor = query("SELECT * FROM motor LIMIT $awalData, $jumlahDataPerHalaman");
                     <img src="halaman/galery/slide1.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption ">
                         <h5>MONAV CLASSIC</h5>
-                        <p>Kami memberikan daftar motor motor classic dan keren, anda tidak perlu lagi bingung untuk mencari motor impian</p>
+                        <p>Kami memberikan daftar motor motor classic dan keren, anda tidak perlu lagi bingung untuk mencari motor impian anda</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="halaman/galery/slide2.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption ">
                         <h5>MONAV CLASSIC</h5>
-                        <p>Bingung pengen punya motor kece? temukan disini aja</p>
+                        <p>Bingung pengen punya motor kece? temukan disini aja, kami menyediakan berbagai daftar motor menarik.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -100,8 +100,6 @@ $motor = query("SELECT * FROM motor LIMIT $awalData, $jumlahDataPerHalaman");
         </div>
 
     </section>
-
-
 
     <section id="halaman2">
         <div class="container text-center">
@@ -201,7 +199,7 @@ $motor = query("SELECT * FROM motor LIMIT $awalData, $jumlahDataPerHalaman");
             <div class="row gy-4 ">
                 <?php $i = 1;
                 foreach ($motor as $mtr) : ?>
-                    <div class="col-md-6 col-sm-6 col-6 col-lg-3" data-aos="flip-down">
+                    <div class="col-md-6 col-sm-6 col-6 col-lg-3" data-aos="fade-up">
                         <div class="card" style="width: 14rem;">
                             <img src="admin/galery/<?= $mtr['foto'] ?>" class="card-img-top" alt="..." style="height: 150px; object-fit: cover;">
                             <div class="card-body">
