@@ -264,6 +264,8 @@ $user = query("SELECT * FROM user");
 
 
     <!-- navbar finish -->
+
+    <!-- home start -->
     <section id="home">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -291,7 +293,9 @@ $user = query("SELECT * FROM user");
             </div>
         </div>
     </section>
+    <!-- home finish -->
 
+    <!-- data start -->
 
     <section class="dashbor min-vh-100 pt-5 pb-5 dashboard">
         <h1 class="text-center text-white">PILIH MOTOR FAVORITE ANDA</h1>
@@ -344,7 +348,7 @@ $user = query("SELECT * FROM user");
                                     <h5 class="card-title"><?= $i++ ?>. <?= $mtr['model'] ?></h5>
                                     <h6 class="card-title"><?= $mtr['merek'] ?></h6>
                                     <p class="card-text">
-                                        <td><?= number_format($mtr['harga'], 0, ',', '.') ?></td>
+                                        <td>RP. <?= number_format($mtr['harga'], 0, ',', '.') ?></td>
                                     </p>
                                     <a href="details.php?id=<?= $mtr['id_motor']; ?>">lihat detail</a>
 
@@ -356,6 +360,8 @@ $user = query("SELECT * FROM user");
             </div>
         </div>
     </section>
+
+    <!-- data finish -->
 
     <!-- footer -->
     <footer>

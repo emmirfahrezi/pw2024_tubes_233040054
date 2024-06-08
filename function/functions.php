@@ -250,7 +250,7 @@ function registrasi($data)
         return false;
     }
 
-    // Get role from user input
+    // ambil role user
     $role = 'user';
     // enkripsi password
     $password_baru = password_hash($password1, PASSWORD_DEFAULT);
@@ -270,27 +270,6 @@ function registrasi($data)
 }
 
 // sort
-
-function sorthuruf($query)
-{
-    $conn = koneksi();
-    $result = mysqli_query($conn, $query);
-
-    if (isset($_POST['sort_huruf']) && $_POST['sort_huruf'] != '') {
-
-        $sortHuruf = $_POST['sort_huruf'] == 'a-z' ? 'ASC' : 'DESC';
-
-        $query .= " ORDER BY model $sortHuruf";
-        $result = mysqli_query($conn, $query);
-    }
-
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
-
-    return $rows;
-}
 
 // edit profile
 function edit($data)

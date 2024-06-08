@@ -249,7 +249,7 @@ $user = query("SELECT * FROM user");
                     </li>
                 </ul>
                 <div class="gap">
-                    <a class="btn btn-primary mr-3" href="cetak.php" target="_blank" role="button">cetak daftar motor</a>
+                    <a class="btn btn-primary mr-3" href="../admin/cetak.php" target="_blank" role="button">cetak daftar motor</a>
                     <a class="btn btn-danger" href="../login/logout.php" role="button">logout</a>
 
                 </div>

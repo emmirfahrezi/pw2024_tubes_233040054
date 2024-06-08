@@ -20,9 +20,9 @@ if (!isset($_GET['id'])) {
 // ambil query dari data
 $id = $_GET['id'];
 
-// query mahasiswa berdasarkan id
+// query motor berdasarkan id
 $mtr = query("SELECT * FROM motor WHERE id_motor = $id");
-// cek apakah tombol sudak di tekan
+// cek apakah tombol sudah di tekan
 if (isset($_POST['ubah'])) {
     if (ubah($_POST) > 0) {
         echo "<script>

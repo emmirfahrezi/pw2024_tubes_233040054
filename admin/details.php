@@ -86,7 +86,6 @@ $mtr = query("SELECT * FROM motor WHERE id_motor=$id"); ?>
 </head>
 
 <body>
-    <!-- navbar start -->
 
 
     <section class="dashbor min-vh-100 pt-5 pb-5 dashboard">
@@ -95,10 +94,6 @@ $mtr = query("SELECT * FROM motor WHERE id_motor=$id"); ?>
 
 
         <div class="container d-flex justify-content-center">
-
-            <!-- button tambah motor -->
-
-
 
             <div class="row gy-4"">
 
